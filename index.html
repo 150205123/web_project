@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes y Proveedores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .container {
+            flex: 1;
+            overflow: auto; /* Permite el desplazamiento si el contenido es demasiado largo */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+            word-break: break-word; /* Asegura que el contenido largo se ajuste a la celda */
+            overflow-wrap: break-word; /* Evita el desbordamiento del contenido */
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .header {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .input-container label {
+            margin-right: 10px;
+        }
+
+        .input-container input {
+            width: 300px; /* Ajusta el ancho del cuadro de texto aquí */
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .button {
+            background-color: gray; /* colores para los botones */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button + .button {
+            margin-left: 10px;
+        }
+
+        .bank-header {
+            text-align: center;
+            font-weight: bold;
+            background-color: #f2f2f2;
+        }
+
+        .bcp-header {
+            background-color: blue;
+            color: white;
+        }
+
+        .scotiabank-header {
+            background-color: red;
+            color: white;
+        }
+
+        .interbank-header {
+            background-color: lightgreen;
+        }
+
+        .bbva-header {
+            background-color: aquamarine;
+        }
+
+        .amarillo {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h2 class="header">CLIENTES Y PROVEEDORES - A</h2>
+
+
+        <div style="text-align: center; margin: 20px;">
+            <button class="button" id="agregar-fila">AGREGAR FILA</button>
+            <button id="guardar" class="button">GUARDAR</button>
+            <button id="limpiar" class="button">LIMPIAR</button>
+            <button id="imprimir" class="button">IMPRIMIR</button>
+            <a href="principio.html">
+                <button class="button">PRINCIPAL</button>
+            </a>
+        </div>
+
+        <div class="form-group">
+            <label for="codigo" class="form-label">Código:</label>
+            <select id="codigo" class="form-select">
+                <option value="">.......................................</option>
+                <option value="CU000001">CU000001</option>
+                <option value="CU000002">CU000002</option>
+                <option value="CU000003">CU000003</option>
+                <option value="CU000004">CU000004</option>
+                <option value="CU000005">CU000005</option>
+                <option value="CU000006">CU000006</option>
+                <option value="CU000007">CU000007</option>
+                <option value="CU000008">CU000008</option>
+                <option value="CU000009">CU000009</option>
+                <option value="CU000010">CU000010</option>
+                <option value="CU000011">CU000011</option>
+                <option value="CU000012">CU000012</option>
+                <option value="CU000013">CU000013</option>
+                <option value="CU000014">CU000014</option>
+                <option value="CU000015">CU000015</option>
+                <option value="CU000016">CU000016</option>
+                <option value="CU000017">CU000017</option>
+                <option value="CU000018">CU000018</option>
+                <option value="CU000019">CU000019</option>
+                <option value="CU000020">CU000020</option>
+                <!-- Agrega más opciones aquí -->
+            </select>
+        </div>
+
+        <div class="input-container">
+            <label for="descripcion">DESCRIPCION:</label>
+            <input type="text" id="descripcion">
+        </div>
+
+
+        <table id="tabla">
+            <thead>
+                <tr>
+                    <th rowspan="2" class="amarillo">FECHA</th>
+                    <th rowspan="2" class="amarillo">RAZON SOCIAL</th>
+                    <th rowspan="2" class="amarillo">RUC</th>
+                    <th rowspan="2" class="amarillo">EMAIL</th>
+                    <th rowspan="2" class="amarillo">CELULAR</th>
+                    
+                    <!-- Encabezados de bancos -->
+                    <th colspan="4" class="bcp-header bank-header">BCP</th>
+                    <th colspan="4" class="scotiabank-header bank-header">SCOTIABANK</th>
+                    <th colspan="4" class="interbank-header bank-header">INTERBANK</th>
+                    <th colspan="4" class="bbva-header bank-header">BBVA</th>
+                </tr>
+                <tr>
+                    <!-- Encabezado de columnas específicas para cada banco -->
+                    <th class="amarillo">CTA CTE MN</th>
+                    <th class="amarillo">CCI</th>
+                    <th class="amarillo">CTA CTE ME</th>
+                    <th class="amarillo">CII</th>
+                    
+                    <th class="amarillo">CTA CTE MN</th>
+                    <th class="amarillo">CCI</th>
+                    <th class="amarillo">CTA CTE ME</th>
+                    <th class="amarillo">CII</th>
+
+                    <th class="amarillo">CTA CTE MN</th>
+                    <th class="amarillo">CCI</th>
+                    <th class="amarillo">CTA CTE ME</th>
+                    <th class="amarillo">CII</th>
+
+                    <th class="amarillo">CTA CTE MN</th>
+                    <th class="amarillo">CCI</th>
+                    <th class="amarillo">CTA CTE ME</th>
+                    <th class="amarillo">CII</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-body">
+                <!-- Aquí se agregarán las filas dinámicamente -->
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td> <!-- Celda para Correo -->
+                    <td contenteditable="true"></td> <!-- Celda para Celular -->
+
+                    <!-- Celdas para BCP -->
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+
+                    <!-- Celdas para SCOTIABANK -->
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+
+                    <!-- Celdas para INTERBANK -->
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+
+                    <!-- Celdas para BBVA -->
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <!-- Puedes agregar más filas aquí si es necesario -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Obtener la tabla y el cuerpo de la tabla
+        const tablaBody = document.getElementById('tabla-body');
+
+        // Función para agregar una nueva fila a la tabla
+        function agregarFila() {
+            const fila = document.createElement('tr');
+            const cantidadCeldas = tablaBody.rows[0] ? tablaBody.rows[0].cells.length : 16;
+
+            let html = '';
+            for (let i = 0; i < cantidadCeldas; i++) {
+                html += '<td contentEditable="true"></td>';
+            }
+
+            fila.innerHTML = html;
+            tablaBody.appendChild(fila);
+        }
+
+        // Función para guardar datos en localStorage
+        function guardarDatos() {
+            const datos = [];
+            const filas = tablaBody.rows;
+            for (let i = 0; i < filas.length; i++) {
+                const fila = filas[i];
+                const celdas = fila.cells;
+                const filaDatos = [];
+                for (let j = 0; j < celdas.length; j++) {
+                    filaDatos.push(celdas[j].innerText);
+                }
+                datos.push(filaDatos);
+            }
+            localStorage.setItem('datosTabla', JSON.stringify(datos));
+        }
+
+        // Función para cargar datos desde localStorage
+        function cargarDatos() {
+            const datos = JSON.parse(localStorage.getItem('datosTabla'));
+            if (datos) {
+                for (let i = 0; i < datos.length; i++) {
+                    const filaDatos = datos[i];
+                    const fila = document.createElement('tr');
+                    for (let j = 0; j < filaDatos.length; j++) {
+                        const celda = document.createElement('td');
+                        celda.innerText = filaDatos[j];
+                        celda.contentEditable = 'true';
+                        fila.appendChild(celda);
+                    }
+                    tablaBody.appendChild(fila);
+                }
+            }
+        }
+
+        // Función para limpiar una fila específica
+        function limpiarFila() {
+            const filaIndex = prompt('Ingrese el número de la fila que desea eliminar (empezando desde 1):');
+            const index = parseInt(filaIndex, 10);
+
+            if (!isNaN(index) && index > 0 && index <= tablaBody.rows.length) {
+                tablaBody.deleteRow(index - 1); // Resta 1 porque los índices de las filas comienzan en 0
+            } else {
+                alert('Número de fila inválido');
+            }
+        }
+
+        // Función para imprimir la página
+        function imprimirPagina() {
+            window.print();
+        }
+
+        
+        document.getElementById('agregar-fila').addEventListener('click', agregarFila);
+        document.getElementById('guardar').addEventListener('click', guardarDatos);
+        document.getElementById('limpiar').addEventListener('click', limpiarFila);
+        document.getElementById('imprimir').addEventListener('click', imprimirPagina);
+
+        // Cargar datos al iniciar
+        cargarDatos();
+    </script>
+</body>
+</html>
