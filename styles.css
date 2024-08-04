@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    flex: 1;
+    overflow: auto; /* Permite el desplazamiento si el contenido es demasiado largo */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+    word-break: break-word; /* Asegura que el contenido largo se ajuste a la celda */
+    overflow-wrap: break-word; /* Evita el desbordamiento del contenido */
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.header {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+
+.input-container label {
+    margin-right: 10px;
+}
+
+.input-container input {
+    width: 300px; /* Ajusta el ancho del cuadro de texto aquí */
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.button {
+    background-color: gray; /* colores para los botones */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button + .button {
+    margin-left: 10px;
+}
+
+.bank-header {
+    text-align: center;
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+.bcp-header {
+    background-color: blue;
+    color: white;
+}
+
+.scotiabank-header {
+    background-color: red;
+    color: white;
+}
+
+.interbank-header {
+    background-color: lightgreen;
+}
+
+.bbva-header {
+    background-color: aquamarine;
+}
+
+.amarillo {
+    background-color: yellow;
+}
